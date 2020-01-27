@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PropertyHeader renders correctly 1`] = `
+<div
+  class="property-header"
+>
+  <div
+    class="d-flex justify-start mt-3"
+  >
+    <div>
+      <div
+        class="property-icon"
+        size="50"
+      >
+        location_city
+      </div>
+    </div>
+     
+    <div
+      class="property-name"
+    >
+      <h3>
+        10 Coila St, Turramurra NSW 2074
+      </h3>
+       
+      <label
+        class="pl-1"
+      >
+        Lot 12 DP4981 KU-RING-GAI
+      </label>
+    </div>
+  </div>
+   
+  <div
+    class="property-score"
+  >
+    <div
+      color="primary"
+      rotate="90"
+      size="80"
+      value="0"
+      width="8"
+    >
+      <div
+        color="primary"
+        x-large=""
+      >
+        home
+      </div>
+    </div>
+     
+    <div
+      class="score-text"
+    >
+      0
+      <small>
+        /10
+      </small>
+    </div>
+  </div>
+</div>
+`;

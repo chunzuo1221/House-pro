@@ -1,0 +1,2433 @@
+{
+  "info": {
+    "title": "HousePro APP",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "/",
+      "description": "server for testing"
+    },
+    {
+      "url": "http://houseproapp-test.herokuapp.com",
+      "description": "server for testing"
+    }
+  ],
+  "openapi": "3.0.0",
+  "paths": {
+    "/login": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "description": "Login to the application",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "description": "Email to use for login.",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "password": {
+                    "description": "User's password.",
+                    "required": true,
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "user model",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "error for the request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/SimpleError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/Errors"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/logout": {
+      "get": {
+        "tags": [
+          "auth"
+        ],
+        "description": "Logout from the application",
+        "responses": {
+          "200": {
+            "description": "empty response"
+          }
+        }
+      }
+    },
+    "/signup": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "description": "Login to the application",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "description": "Email to use for login.",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "name": {
+                    "description": "User's name",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "password": {
+                    "description": "User's password.",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "confirmPassword": {
+                    "description": "Repeat user's password",
+                    "required": true,
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "user model",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "error for the request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/SimpleError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/Errors"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/account/password": {
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "user"
+        ],
+        "description": "Change password",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "password": {
+                    "description": "New password",
+                    "type": "string"
+                  },
+                  "confirmPassword": {
+                    "description": "Confirm new password",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "empty response"
+          },
+          "400": {
+            "description": "error for the request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/SimpleError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/Errors"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/account/delete": {
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "user"
+        ],
+        "description": "Delete account",
+        "responses": {
+          "200": {
+            "description": "empty response"
+          },
+          "400": {
+            "description": "error for the request"
+          }
+        }
+      }
+    },
+    "/account/profile": {
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "user"
+        ],
+        "description": "Update profile",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "description": "Email to use for login.",
+                    "type": "string"
+                  },
+                  "name": {
+                    "description": "User name",
+                    "type": "string"
+                  },
+                  "gender": {
+                    "description": "User's gender",
+                    "type": "string",
+                    "enum": [
+                      "male",
+                      "female",
+                      "other"
+                    ]
+                  },
+                  "website": {
+                    "description": "User's website",
+                    "type": "string"
+                  },
+                  "location": {
+                    "description": "User's location",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "empty response"
+          },
+          "400": {
+            "description": "error for the request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/SimpleError"
+                    },
+                    {
+                      "$ref": "#/components/schemas/Errors"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/properties": {
+      "post": {
+        "tags": [
+          "property"
+        ],
+        "description": "Create property model only if it doesn't exist",
+        "requestBody": {
+          "required": true,
+          "description": "Property model without services array. The services array will populated on backend",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Property"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "property"
+        ],
+        "description": "Find property by place_id",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "place_id",
+            "schema": {
+              "type": "string"
+            },
+            "required": false,
+            "description": "Place id goes from google maps API response. It should be unique field"
+          },
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "string"
+            },
+            "required": false,
+            "description": "Name of property"
+          },
+          {
+            "in": "query",
+            "name": "vicinity",
+            "schema": {
+              "type": "string"
+            },
+            "required": false,
+            "description": "Vicinity of property"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Property model",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Property"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "System error"
+          }
+        }
+      }
+    },
+    "/api/properties/{id}": {
+      "get": {
+        "tags": [
+          "property"
+        ],
+        "description": "Find property by id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "id goes from mongodb. It is a unique field"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Property model",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Property"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "System error"
+          }
+        }
+      }
+    },
+    "/api/properties/{propertyId}/survey/score": {
+      "post": {
+        "tags": [
+          "survey"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "description": "https://housepro.atlassian.net/wiki/spaces/HH/pages/59604993/HousePro+Property+Evaluation+Engine+HPEE",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "propertyId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "id goes from mongodb. It is a unique field"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "module": {
+                    "type": "string",
+                    "description": "'services' for example"
+                  },
+                  "section": {
+                    "type": "string"
+                  },
+                  "category": {
+                    "type": "string",
+                    "description": "'service-schools' for example"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Score",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "surveyScore": {
+                      "type": "number"
+                    },
+                    "maxScore": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/properties/{propertyId}/survey/answer": {
+      "get": {
+        "tags": [
+          "survey"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "description": "Find survey answer by property id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "propertyId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "id goes from mongodb. It is a unique field"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Answer model",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "userId": {
+                      "type": "string"
+                    },
+                    "_id": {
+                      "type": "string"
+                    },
+                    "propertyId": {
+                      "type": "string"
+                    },
+                    "responses": {
+                      "$ref": "#/components/schemas/SurveyAnswerResponses"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "System error"
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "survey"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "propertyId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "id goes from mongodb. It is a unique field"
+          }
+        ],
+        "description": "Create Survey Answer. Or update existing model. The endpoint expect _id(model id) and _id for each response to update existing responses. The _id must be omitted for the new model or new response.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "responses": {
+                    "$ref": "#/components/schemas/SurveyAnswerResponses"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "survey answer model",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "userId": {
+                      "type": "string"
+                    },
+                    "propertyId": {
+                      "type": "string"
+                    },
+                    "_id": {
+                      "type": "string"
+                    },
+                    "responses": {
+                      "$ref": "#/components/schemas/SurveyAnswerResponses"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "error for the request"
+          },
+          "500": {
+            "description": "system error for the request"
+          }
+        }
+      },
+      "put": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "survey"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "propertyId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "id goes from mongodb. It is a unique field"
+          }
+        ],
+        "description": "Update Survey Answer. Actually the post and put are the same",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "responses": {
+                    "$ref": "#/components/schemas/SurveyAnswerResponses"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "survey answer model",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "userId": {
+                      "type": "string"
+                    },
+                    "propertyId": {
+                      "type": "string"
+                    },
+                    "_id": {
+                      "type": "string"
+                    },
+                    "responses": {
+                      "$ref": "#/components/schemas/SurveyAnswerResponses"
+                    }
+                  }
+
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "error for the request"
+          },
+          "500": {
+            "description": "system error for the request"
+          }
+        }
+      }
+    },
+    "/api/properties/{propertyId}/suburb/assessment": {
+      "post": {
+        "tags": [
+          "property"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "description": "https://housepro.atlassian.net/wiki/spaces/HH/pages/61046786/HousePro+Property+Research+Engine+HPRE",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "propertyId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "propertyId goes from mongodb. It is a unique field"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Service proximity assessment results for the given property",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceProximityAssessment"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "System error"
+          }
+        }
+      }
+    },
+    "/api/properties/{propertyId}/survey/remains": {
+      "get": {
+        "tags": [
+          "survey"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "description": "Get remained summary questions count",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "propertyId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "id goes from mongodb. It is a unique field"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "remainedCount": {
+                      "type": "int"
+                    },
+                    "totalCount": {
+                      "type": "int"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "System error"
+          }
+        }
+      }
+    },
+    "/api/properties/{propertyId}/survey/ranking": {
+      "get": {
+        "tags": [
+          "survey"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "description": "Get comparative survey ranking data for the property",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "propertyId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "mongodb object Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "percentile": {
+                      "type": "string",
+                      "description": "Percentile, 86th like ordinal number"
+                    },
+                    "total": {
+                      "type": "int",
+                      "description": "Total number of properties which includes survey answers"
+                    },
+                    "template": {
+                      "type": "string",
+                      "description": "Paragraph html text which contains {percentile}, {total}, {name}"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "System error"
+          }
+        }
+      }
+    },
+    "/api/properties/{propertyId}/provider/kmc": {
+      "post": {
+        "tags": [
+          "property"
+        ],
+        "description": "Process the data from External Data Providers"
+      }
+    },
+    "/api/questions": {
+      "get": {
+        "tags": [
+          "survey"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "description": "Find survey questions list",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "questionModule",
+            "schema": {
+              "type": "string"
+            },
+            "required": false,
+            "description": ""
+          },
+          {
+            "in": "query",
+            "name": "questionSection",
+            "schema": {
+              "type": "string"
+            },
+            "required": false,
+            "description": ""
+          },
+          {
+            "in": "query",
+            "name": "questionCategory",
+            "schema": {
+              "type": "string"
+            },
+            "required": false,
+            "description": ""
+          },
+          {
+            "in": "query",
+            "name": "pageNumber",
+            "schema": {
+              "type": "int"
+            },
+            "required": false,
+            "description": ""
+          },
+          {
+            "in": "query",
+            "name": "pageSize",
+            "schema": {
+              "type": "int"
+            },
+            "required": false,
+            "description": ""
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "schema": {
+              "type": "string"
+            },
+            "required": false,
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Question model",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SurveyQuestion"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "System error"
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "survey"
+        ],
+        "description": "Create Survey Question",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SurveyQuestion"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "survey question model",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SurveyQuestion"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "error for the request"
+          },
+          "500": {
+            "description": "system error for the request"
+          }
+        }
+      }
+    },
+    "/api/questions/autocomplete": {
+      "get": {
+        "tags": [
+          "survey"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "description": "Find survey questions list includes input string",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "text",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "'what' for example"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Question model",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SurveyQuestion"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "System error"
+          }
+        }
+      }
+    },
+    "/api/questions/{questionId}": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "survey"
+        ],
+        "description": "Find survey question by id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "questionId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "id goes from mongodb. It is a unique field"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Question model",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SurveyQuestion"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "System error"
+          }
+        }
+      },
+      "put": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "survey"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "questionId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "id goes from mongodb. It is a unique field"
+          }
+        ],
+        "description": "Update Survey Question",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SurveyQuestion"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "survey question model",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SurveyQuestion"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "error for the request"
+          },
+          "500": {
+            "description": "system error for the request"
+          }
+        }
+      }
+    },
+    "/api/referencedata/question": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "referencedata"
+        ],
+        "description": "Get question classification data",
+        "parameters": [
+          {
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Question Classification model",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuestionClassification"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "System error"
+          }
+        }
+      }
+    },
+    "/api/suburbs": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "suburb"
+        ],
+        "description": "Get suburbs list matched with field values",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "postCode",
+            "schema": {
+              "type": "string"
+            },
+            "required": false,
+            "description": "Postal Code to be matched"
+          },
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "string"
+            },
+            "required": false,
+            "description": "Suburb name to be matched"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Suburb list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Suburb"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Data not found"
+          },
+          "500": {
+            "description": "Internal Server error"
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "suburb"
+        ],
+        "description": "Create new suburb record",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Suburb"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Generated suburb record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Suburb"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/api/suburbs/{suburbId}": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "suburb"
+        ],
+        "description": "Get suburb record by suburbId",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "suburbId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The suburbId goes from mongodb. It is unique"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Fetched suburb record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Suburb"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Data not found"
+          },
+          "500": {
+            "description": "Internal Server error"
+          }
+        }
+      },
+      "put": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "suburb"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "suburbId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The suburbId goes from mongodb. It is unique"
+          }
+        ],
+        "description": "Update suburb record",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Suburb"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated suburb record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Suburb"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "suburb"
+        ],
+        "description": "Delete an existed suburb record",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "suburbId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The suburbId goes from mongodb. It is unique"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "500": {
+            "description": "Internal Server error"
+          }
+        }
+      }
+    },
+    "/api/suburb/rules": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "suburb"
+        ],
+        "description": "Get proximity rules list",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "name",
+            "schema": {
+              "type": "string"
+            },
+            "required": false,
+            "description": "Proximity rule name to be matched"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Proximity rules list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProximityRule"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Data not found"
+          },
+          "500": {
+            "description": "Internal Server error"
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "suburb"
+        ],
+        "description": "Add new proximity rule record",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProximityRule"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "New proximity rule record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProximityRule"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/api/suburb/rules/{proximityRuleId}": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "suburb"
+        ],
+        "description": "Get proximity rule record by proximityRuleId",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "proximityRuleId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The proximityRuleId goes from mongodb. It is unique"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Fetched proximity rule record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProximityRule"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Data not found"
+          },
+          "500": {
+            "description": "Internal Server error"
+          }
+        }
+      },
+      "put": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "suburb"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "proximityRuleId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The proximityRuleId goes from mongodb. It is unique"
+          }
+        ],
+        "description": "Update proximity rule record",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProximityRule"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated proximity rule record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProximityRule"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "suburb"
+        ],
+        "description": "Delete an existed proximity rule record",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "proximityRuleId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The proximityRuleId goes from mongodb. It is unique"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "500": {
+            "description": "Internal Server error"
+          }
+        }
+      }
+    },
+    "/api/contentfragments": {
+      "get": {
+        "description": "Get contentfragment records filtered by query. (e.g: {moduleCode: 'location', reportContentType: 'overall'})"
+      },
+      "responses": {
+        "200": {
+          "description": "Fetched contentfragment records array",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContentFragment"
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "Data not found"
+        },
+        "500": {
+          "description": "Internal Server error"
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Property": {
+        "type": "object",
+        "properties": {
+          "address_components": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "long_name": {
+                  "type": "string"
+                },
+                "short_name": {
+                  "type": "string"
+                },
+                "types": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "geometry": {
+            "location": {
+              "lat": {
+                "type": "number"
+              },
+              "lng": {
+                "type": "number"
+              }
+            },
+            "viewport": {
+              "northeast": {
+                "lat": {
+                  "type": "number"
+                },
+                "lng": {
+                  "type": "number"
+                }
+              },
+              "southwest": {
+                "lat": {
+                  "type": "number"
+                },
+                "lng": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "formatted_address": {
+            "type": "string"
+          },
+          "place_id": {
+            "type": "string"
+          },
+          "icon": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "services": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "distance": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "duration": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "geometry": {
+                  "location": {
+                    "lat": {
+                      "type": "number"
+                    },
+                    "lng": {
+                      "type": "number"
+                    }
+                  },
+                  "viewport": {
+                    "northeast": {
+                      "lat": {
+                        "type": "number"
+                      },
+                      "lng": {
+                        "type": "number"
+                      }
+                    },
+                    "southwest": {
+                      "lat": {
+                        "type": "number"
+                      },
+                      "lng": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                },
+                "place_id": {
+                  "type": "string"
+                },
+                "icon": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "rating": {
+                  "type": "number"
+                },
+                "reference": {
+                  "type": "string"
+                },
+                "scope": {
+                  "type": "string"
+                },
+                "types": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "vicinity": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "reference": {
+            "type": "string"
+          },
+          "scope": {
+            "type": "string"
+          },
+          "types": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "url": {
+            "type": "string"
+          },
+          "utc_offset": {
+            "type": "number"
+          },
+          "vicinity": {
+            "type": "string"
+          },
+          "externalData": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "providerId": {
+                  "type": "string"
+                },
+                "providerUrl": {
+                  "type": "string"
+                },
+                "providerName": {
+                  "type": "string"
+                },
+                "extPropertyId": {
+                  "type": "string"
+                },
+                "dataRecords": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "profile": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "gender": {
+                "type": "string",
+                "enum": [
+                  "male",
+                  "female",
+                  "other"
+                ]
+              },
+              "location": {
+                "type": "string"
+              },
+              "website": {
+                "type": "string"
+              }
+            }
+          },
+          "email": {
+            "type": "string"
+          }
+        }
+      },
+      "SimpleError": {
+        "type": "object",
+        "properties": {
+          "msg": {
+            "type": "string"
+          }
+        }
+      },
+      "Errors": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "msg": {
+              "type": "string"
+            },
+            "param": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "SurveyQuestion": {
+        "type": "object",
+        "properties": {
+          "isDeactivated": {
+            "type": "boolean",
+            "description": "whether the question will be not enabled for survey"
+          },
+          "questionCode": {
+            "description": "Code to be displayed on screen",
+            "type": "string"
+          },
+          "text": {
+            "description": "Text to be displayed on screen",
+            "type": "string"
+          },
+          "dependentMode": {
+            "description": "include | exclude",
+            "type": "string"
+          },
+          "questionModule": {
+            "description": "The Module that this question belongs to",
+            "type": "string"
+          },
+          "questionSection": {
+            "description": "The Section that this question belongs to",
+            "type": "string"
+          },
+          "questionCategory": {
+            "description": "The Category (within a Module) that this question belongs to",
+            "type": "string"
+          },
+          "questionPageOrder": {
+            "description": "The order of the question in relation to other questions",
+            "type": "number"
+          },
+          "reportOrder": {
+            "description": "The order of the question in the Land and House Reports",
+            "type": "number"
+          },
+          "dependentQuestionId": {
+            "description": "The question id that this question is dependent on.",
+            "type": "string"
+          },
+          "dependentResponseId": {
+            "description": "ResponseId of dependent question",
+            "type": "string"
+          },
+          "applicableSuburbs": {
+            "description": "Applicable Suburbs post code array",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "adjustmentQuestion": {
+            "description": "Bonus Adjustment",
+            "type": "boolean"
+          },
+          "detailedSurveyQuestion": {
+            "description": "Display in Summary",
+            "type": "boolean"
+          },
+          "responses": {
+            "description": "An Array of the available responses that should be presented to the user with the question",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "responseCode": {
+                  "description": "",
+                  "type": "string"
+                },
+                "responseScore": {
+                  "type": "number",
+                  "description": "The score attributed to this response if selected"
+                },
+                "responseOrder": {
+                  "type": "number",
+                  "description": "The order number decided the order of Responses too - both in the Question Manager and in the response dropdown on the /survey/ page."
+                },
+                "responseText": {
+                  "type": "string",
+                  "description": "For use when the response_type is 'absolute'"
+                },
+                "responseCommentary": {
+                  "type": "string",
+                  "description": "Just a comment"
+                }
+              }
+            }
+          }
+        }
+      },
+      "SurveyAnswerResponses": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "questionId": {
+              "type": "string",
+              "description": ""
+            },
+            "responseId": {
+              "type": "string",
+              "description": ""
+            },
+            "responseScore": {
+              "type": "number",
+              "description": ""
+            },
+            "responseMax": {
+              "type": "number",
+              "description": ""
+            },
+            "questionModule": {
+              "type": "string",
+              "description": ""
+            },
+            "questionSection": {
+              "type": "string",
+              "description": ""
+            },
+            "questionCategory": {
+              "type": "string",
+              "description": ""
+            },
+            "adjustmentQuestion": {
+              "type": "boolean",
+              "description": "Bonus adjustment"
+            }
+          }
+        }
+      },
+      "QuestionClassification": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Name to be displayed on screen",
+            "type": "string"
+          },
+          "modules": {
+            "description": "An array of module",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "description": "Text to be displayed on screen"
+                },
+                "code": {
+                  "type": "string",
+                  "description": "Code to be displayed on screen"
+                },
+                "sections": {
+                  "description": "An array of section",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "text": {
+                        "type": "string",
+                        "description": "Text to be displayed on screen"
+                      },
+                      "code": {
+                        "type": "string",
+                        "description": "Code to be displayed on screen"
+                      },
+                      "categories": {
+                        "description": "An array of category",
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "text": {
+                              "type": "string",
+                              "description": "Text to be displayed on screen"
+                            },
+                            "code": {
+                              "type": "string",
+                              "description": "Code to be displayed on screen"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "ServiceClassification": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Name to be displayed on screen",
+            "type": "string"
+          },
+          "serviceCategories": {
+            "description": "An array of service category",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "description": "Code to be displayed on screen"
+                },
+                "text": {
+                  "type": "string",
+                  "description": "Text to be displayed on screen"
+                },
+                "scoringTypes": {
+                  "type": "string",
+                  "description": "Scoring types to be displayed on screen"
+                },
+                "serviceTypes": {
+                  "description": "An array of service type",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "string",
+                        "description": "Code to be displayed on screen"
+                      },
+                      "text": {
+                        "type": "string",
+                        "description": "Text to be displayed on screen"
+                      },
+                      "travelTime": {
+                        "type": "string",
+                        "description": "Travel time"
+                      }
+                    }
+                  }
+                },
+                "serviceSubTypes": {
+                  "description": "An array of service sub type",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "string",
+                        "description": "Code to be displayed on screen"
+                      },
+                      "text": {
+                        "type": "string",
+                        "description": "Text to be displayed on screen"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "Suburb": {
+        "type": "object",
+        "description": "Suburb data",
+        "properties": {
+          "postCode": {
+            "type": "string",
+            "description": "Property postal code"
+          },
+          "name": {
+            "type": "string",
+            "description": "Suburb name"
+          },
+          "services": {
+            "type": "array",
+            "description": "Services",
+            "items": {
+              "type": "object",
+              "properties": {
+                "lookupType": {
+                  "type": "string",
+                  "description": "Lookup Type ('google' | 'catchment')"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Service name"
+                },
+                "googlePlaceId": {
+                  "type": "string",
+                  "description": "Google Place ID"
+                },
+                "serviceCategory": {
+                  "type": "string",
+                  "description": "Service Category"
+                },
+                "serviceType": {
+                  "type": "string",
+                  "description": "Service Type"
+                },
+                "serviceSubType": {
+                  "type": "string",
+                  "description": "Service Sub-Type"
+                },
+                "keywords": {
+                  "type": "string",
+                  "description": "Keywords"
+                },
+                "proximityRuleId": {
+                  "type": "string",
+                  "description": "ProximityRule Object ID"
+                },
+                "trips": {
+                  "type": "array",
+                  "description": "Optional ability control number of trips to evaluate and time of day",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "Trip sequence name"
+                      },
+                      "time": {
+                        "type": "string",
+                        "description": "Expected departure time"
+                      },
+                      "returnTrip": {
+                        "type": "boolean",
+                        "description": "Is the return trip?"
+                      }
+                    }
+                  }
+                },
+                "bonuses": {
+                  "type": "array",
+                  "description": "Bonus options for the suburb service",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "placeName": {
+                        "type": "string",
+                        "description": "Place name to award bonus"
+                      },
+                      "placeId": {
+                        "type": "string",
+                        "description": "Google Place ID to award bonus"
+                      },
+                      "amount": {
+                        "type": "number",
+                        "description": "Bonus amount"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "dataProviders": {
+            "type": "array",
+            "description": "External Data Providers",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Provider name"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "Provider Description"
+                },
+                "resolveExtIDUrl": {
+                  "type": "string",
+                  "description": "Get ExtID Url"
+                },
+                "getExtPropertyDetailsUrl": {
+                  "type": "string",
+                  "description": "Get Property Detail Url"
+                },
+                "processExternalResponseUrl": {
+                  "type": "string",
+                  "description": "Process Data Url"
+                }
+              }
+            }
+          },
+          "overviewDescription": {
+            "type": "string",
+            "description": "Property overview description"
+          }
+        }
+      },
+      "ProximityRule": {
+        "type": "object",
+        "description": "Proximity Rule for HPRE",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Proximity Rule Name"
+          },
+          "code": {
+            "type": "string",
+            "description": "Proximity Rule Code"
+          },
+          "measures": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "travelMode": {
+                  "type": "string",
+                  "description": "Travel Mode"
+                },
+                "upperBound": {
+                  "type": "number",
+                  "description": "Upper Bound"
+                },
+                "units": {
+                  "type": "string",
+                  "description": "Units"
+                },
+                "score": {
+                  "type": "number",
+                  "description": "Assessment resulting score"
+                },
+                "order": {
+                  "type": "number",
+                  "description": "Assessing order"
+                }
+              }
+            }
+          }
+        }
+      },
+      "ServiceProximityAssessment": {
+        "type": "object",
+        "description": "Service proximity assessment results",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "description": "UUID of an user who has been authenticated by Cognito User Pool"
+          },
+          "propertyId": {
+            "type": "string",
+            "description": "Property id"
+          },
+          "suburbId": {
+            "type": "string",
+            "description": "Suburb id"
+          },
+          "assessmentDateTime": {
+            "type": "string",
+            "description": "Assessment date time"
+          },
+          "services": {
+            "type": "array",
+            "description": "Assessment results",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Suburb service name"
+                },
+                "googlePlaceId": {
+                  "type": "string",
+                  "description": "Google Place ID which comes from Google Places API"
+                },
+                "serviceCategory": {
+                  "type": "string",
+                  "description": "Suburb service category"
+                },
+                "serviceType": {
+                  "type": "string",
+                  "description": "Suburb service type"
+                },
+                "serviceSubType": {
+                  "type": "string",
+                  "description": "Suburb service sub-type"
+                },
+                "keywords": {
+                  "type": "string",
+                  "description": "Suburb service keywords"
+                },
+                "proximityRuleCode": {
+                  "type": "string",
+                  "description": "Proximity rule code"
+                },
+                "servicePenalty": {
+                  "type": "number",
+                  "description": "Service Penalty amount"
+                },
+                "travels": {
+                  "type": "array",
+                  "description": "scoring result per each travel mode",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "matchedTravelMode": {
+                        "type": "string",
+                        "description": "Matched travel mode"
+                      },
+                      "travelDistance": {
+                        "type": "number",
+                        "description": "Travel distance (metres)"
+                      },
+                      "travelTime": {
+                        "type": "number",
+                        "description": "Travel time (seconds)"
+                      },
+                      "score": {
+                        "type": "number",
+                        "description": "Suburb service assessment score"
+                      },
+                      "maxScore": {
+                        "type": "number",
+                        "description": "Suburb service assessment max score"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "Portfolio": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "description": "User Id"
+          },
+          "properties": {
+            "type": "string",
+            "description": "Properties where the user is interested on"
+          }
+        }
+      },
+      "ContentFragment": {
+        "type": "object",
+        "properties": {
+          "moduleCode": {
+            "type": "string",
+            "description": "Module Code"
+          },
+          "reportContentType": {
+            "type": "string",
+            "description": "Report Content Type"
+          },
+          "contentFragment": {
+            "type": "string",
+            "description": "Content Fragment Hyper Text Template"
+          },
+          "upperBound": {
+            "type": "number",
+            "description": "Upper bound score"
+          }
+        }
+      },
+      "ExternalToken": {
+        "type": "object",
+        "properties": {
+          "providerId": {
+            "type": "string",
+            "description": "Data Provider Id (ex. domain)"
+          },
+          "apiClients": {
+            "type": "array",
+            "description": "API client list with token",
+            "items": {
+              "type": "object",
+              "properties": {
+                "scope": {
+                  "type": "string",
+                  "description": "The data scope where the app client can access"
+                },
+                "accessToken": {
+                  "type": "string",
+                  "description": "The value which will be used as the bearer token to authorise requests"
+                },
+                "updatedAt": {
+                  "type": "date",
+                  "description": "Time updated accessToken"
+                },
+                "expiresIn": {
+                  "type": "number",
+                  "description": "The lifetime in seconds of the token"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "responses": {
+  },
+  "parameters": {
+  },
+  "securitySchemes": {
+  },
+  "tags": [
+    {
+      "name": "auth",
+      "description": "Authentication"
+    },
+    {
+      "name": "user",
+      "description": "Manage profile and account"
+    },
+    {
+      "name": "survey",
+      "description": "At the heart of the assessment process is a client survey covering various aspects of the property location, land and house. This is being designed to provide a flexible mechanism for creating survey questions, specifying possible responses and scoring those responses"
+    }
+  ]
+}

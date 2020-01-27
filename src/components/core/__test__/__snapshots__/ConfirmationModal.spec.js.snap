@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfirmationModal renders correctly 1`] = `
+<div
+  class="confirmation-modal"
+>
+  <div
+    class="modal-content"
+  >
+    <div
+      class="text-center"
+    />
+  </div>
+   
+  <div
+    class="modal-footer"
+  >
+    <button>
+      Yes
+    </button>
+     
+    <button>
+      No
+    </button>
+  </div>
+</div>
+`;

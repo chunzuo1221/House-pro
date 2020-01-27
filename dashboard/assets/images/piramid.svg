@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="89.198" height="61.222" viewBox="0 0 89.198 61.222">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #528ec1;
+        stroke-linecap: round;
+        stroke-width: 3px;
+      }
+    </style>
+  </defs>
+  <g id="Group_175" data-name="Group 175" transform="translate(-908.399 -862.399)">
+    <line id="Line_34" data-name="Line 34" class="cls-1" x2="85" transform="translate(910.5 921.5)"/>
+    <line id="Line_35" data-name="Line 35" class="cls-1" y1="57" x2="43" transform="translate(910.5 864.5)"/>
+    <line id="Line_36" data-name="Line 36" class="cls-1" x1="42" y1="57" transform="translate(953.5 864.5)"/>
+    <line id="Line_37" data-name="Line 37" class="cls-1" x2="61" transform="translate(922.5 905.5)"/>
+    <line id="Line_38" data-name="Line 38" class="cls-1" x2="32" transform="translate(937.5 887.5)"/>
+    <line id="Line_39" data-name="Line 39" class="cls-1" x2="16" y2="18" transform="translate(937.5 887.5)"/>
+    <line id="Line_40" data-name="Line 40" class="cls-1" x1="16" y2="18" transform="translate(953.5 887.5)"/>
+    <line id="Line_41" data-name="Line 41" class="cls-1" y1="16" x2="16" transform="translate(937.5 905.5)"/>
+    <line id="Line_42" data-name="Line 42" class="cls-1" x1="16" y1="16" transform="translate(953.5 905.5)"/>
+    <line id="Line_43" data-name="Line 43" class="cls-1" y1="16" x2="14" transform="translate(969.5 905.5)"/>
+    <line id="Line_44" data-name="Line 44" class="cls-1" x1="15" y1="16" transform="translate(922.5 905.5)"/>
+  </g>
+</svg>

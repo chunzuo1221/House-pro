@@ -1,0 +1,94 @@
+# This is a sample build configuration for JavaScript.
+# Check our guides at https://confluence.atlassian.com/x/14UWN for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: node:8
+clone:
+  depth: full
+pipelines:
+  # default:
+  #     - step:
+  #         script:
+  #           - npm install
+  #           - npm run test
+  #           # - git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME_TEST.git HEAD:master  
+  #           # - npm run e2e:test
+  branches:
+    feature/*:
+      - step:
+          caches:
+            - npm
+            - cypress
+          script:
+            - npm install
+            - npm test
+    bug/*:
+      - step:
+          caches:
+            - npm
+            - cypress
+          script:
+            - npm install
+            - npm test
+    develop:
+      - step:
+          caches:
+            - npm
+            - cypress
+          deployment: test
+          script:
+            - apt-get -y update && apt-get -y install xvfb libgtk2.0-0 libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 jq ssh
+            - npm install -g json
+            - json -I -f package.json -e this.build=$BITBUCKET_BUILD_NUMBER
+            - echo $BITBUCKET_BUILD_NUMBER
+            - npm install
+            - npm test
+            - git config --global user.name "Adam Asher"
+            - git config --global user.email "ashera247@gmail.com"
+            - git add .
+            - git commit -am "Bump build number"
+            - git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME_TEST.git HEAD:master
+            - npm run e2e:test
+    master:
+      - step:
+          caches:
+            - npm
+            - cypress
+          deployment: staging
+          script:
+            - apt-get -y update && apt-get -y install xvfb libgtk2.0-0 libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 jq ssh
+            - npm install -g json
+            - json -I -f package.json -e this.build=$BITBUCKET_BUILD_NUMBER
+            - echo $BITBUCKET_BUILD_NUMBER
+            - npm install
+            - npm test
+            - git config --global user.name "Adam Asher"
+            - git config --global user.email "ashera247@gmail.com"
+            - git add .
+            - git commit -am "Bump build number"
+            - git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME_STAGE.git HEAD            
+            - npm run e2e:stage
+    production_release:
+      - step:
+          caches:
+            - npm
+            - cypress
+          deployment: production
+          script:
+            - apt-get -y update && apt-get -y install xvfb libgtk2.0-0 libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 jq ssh
+            - npm install -g json
+            - json -I -f package.json -e this.build=$BITBUCKET_BUILD_NUMBER
+            - echo $BITBUCKET_BUILD_NUMBER
+            - npm install
+            - npm test
+            - git config --global user.name "Adam Asher"
+            - git config --global user.email "ashera247@gmail.com"
+            - git add .
+            - git commit -am "Bump build number"
+            - git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME_PROD.git HEAD:master   
+            - npm run e2e:prod
+definitions:
+   caches:
+      npm: $HOME/.npm
+      cypress: $HOME

@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LineProgress renders correctly 1`] = `
+<div
+  id="line_progress"
+>
+  <div
+    id="line-progress"
+  >
+    <!---->
+     
+    <svg
+      class="line-progress"
+      viewBox="0 0 100 3"
+    >
+      <path
+        class="progress-bg"
+        d="M0 0 l100 0"
+        stroke-width="4"
+      />
+       
+      <path
+        class=""
+        d="M0 0 l100 0"
+        stroke-width="4"
+      />
+    </svg>
+     
+    <div
+      class="display-block"
+    >
+      <div
+        class="pull-left"
+      >
+        
+      </div>
+       
+      <div
+        class="pull-right"
+      >
+        -1/10
+      </div>
+    </div>
+  </div>
+</div>
+`;

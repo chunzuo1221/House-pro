@@ -1,0 +1,711 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LocationReport renders correctly 1`] = `
+<section
+  class="location-report"
+  property="[object Object]"
+>
+  <div
+    class="text-xs-center"
+  >
+    <h1
+      class="my-4"
+    >
+      LOCATION REPORT
+    </h1>
+     
+    <div />
+     
+    <div
+      class="primary--text subheading mt-2"
+    >
+      The HousePro Research Algorithm has analysed:
+    </div>
+     
+    <strong>
+      
+    </strong>
+     
+    <div
+      class="primary--text subheading mt-2"
+    >
+      and has assessed that within:
+    </div>
+     
+    <strong>
+      Willoughby, North Willoughby, East Willoughby, Castlecrag & Middle Cove
+    </strong>
+     
+    <div
+      class="primary--text subheading my-3"
+    >
+      the property location is:
+    </div>
+     
+    <h1
+      class="text-uppercase font-weight-bold primary--text display-2"
+    >
+      Below Average
+    </h1>
+  </div>
+   
+  <div
+    justify-center=""
+    row=""
+    wrap=""
+  >
+    <div
+      pa-3=""
+      xs4=""
+    >
+      <div
+        class="my-1"
+        value="0"
+      />
+       
+      <div
+        class="d-flex justify-space-between"
+      >
+        <div>
+          ACCESS TO SERVICES
+        </div>
+         
+        <div />
+         
+        <div
+          class="text-xs-right"
+        >
+          0/10
+        </div>
+      </div>
+    </div>
+     
+    <div
+      pa-3=""
+      xs4=""
+    >
+      <div
+        class="my-1"
+        value="0"
+      />
+       
+      <div
+        class="d-flex justify-space-between"
+      >
+        <div>
+          POSITION
+        </div>
+         
+        <div />
+         
+        <div
+          class="text-xs-right"
+        >
+          0/10
+        </div>
+      </div>
+    </div>
+  </div>
+   
+  <!---->
+   
+  <div
+    justify-center=""
+    row=""
+    wrap=""
+  >
+    <div
+      my-4=""
+      xs12=""
+    >
+      <div
+        class="overview-title blue-under-line primary--text"
+      >
+        
+        Access to Services
+      
+      </div>
+    </div>
+     
+    <div
+      pa-3=""
+      xs4=""
+    >
+      <div
+        class="d-flex justify-space-between primary--text"
+      >
+        <strong>
+          Schools
+        </strong>
+         
+        <div />
+         
+        <strong
+          class="text-xs-right"
+        >
+          0/10
+        </strong>
+      </div>
+       
+      <div
+        class="mt-1"
+        value="0"
+      />
+    </div>
+    <div
+      pa-3=""
+      xs4=""
+    >
+      <div
+        class="d-flex justify-space-between primary--text"
+      >
+        <strong>
+          Parks and Leisure
+        </strong>
+         
+        <div />
+         
+        <strong
+          class="text-xs-right"
+        >
+          0/10
+        </strong>
+      </div>
+       
+      <div
+        class="mt-1"
+        value="0"
+      />
+    </div>
+    <div
+      pa-3=""
+      xs4=""
+    >
+      <div
+        class="d-flex justify-space-between primary--text"
+      >
+        <strong>
+          Shopping
+        </strong>
+         
+        <div />
+         
+        <strong
+          class="text-xs-right"
+        >
+          0/10
+        </strong>
+      </div>
+       
+      <div
+        class="mt-1"
+        value="0"
+      />
+    </div>
+    <div
+      pa-3=""
+      xs4=""
+    >
+      <div
+        class="d-flex justify-space-between primary--text"
+      >
+        <strong>
+          Medical Facilities
+        </strong>
+         
+        <div />
+         
+        <strong
+          class="text-xs-right"
+        >
+          0/10
+        </strong>
+      </div>
+       
+      <div
+        class="mt-1"
+        value="0"
+      />
+    </div>
+    <div
+      pa-3=""
+      xs4=""
+    >
+      <div
+        class="d-flex justify-space-between primary--text"
+      >
+        <strong>
+          Walkable Services
+        </strong>
+         
+        <div />
+         
+        <strong
+          class="text-xs-right"
+        >
+          0/10
+        </strong>
+      </div>
+       
+      <div
+        class="mt-1"
+        value="0"
+      />
+    </div>
+    <div
+      pa-3=""
+      xs4=""
+    >
+      <div
+        class="d-flex justify-space-between primary--text"
+      >
+        <strong>
+          Public Transport
+        </strong>
+         
+        <div />
+         
+        <strong
+          class="text-xs-right"
+        >
+          0/10
+        </strong>
+      </div>
+       
+      <div
+        class="mt-1"
+        value="0"
+      />
+    </div>
+     
+    <div
+      xs8=""
+    >
+      <v-alert-stub
+        class="text-xs-center pa-2"
+        color="primary"
+        outline=""
+        value="true"
+      >
+        <span
+          class="subheading"
+        >
+          
+          0 local services and features have been researched, analysed and scored
+          by our HousePro algorithm for access and proximity to this location.
+        
+        </span>
+      </v-alert-stub>
+    </div>
+  </div>
+   
+  <div
+    row=""
+    wrap=""
+  >
+    <div
+      my-3=""
+      sm12=""
+    >
+      <div
+        class="blue-under-line"
+      >
+        <span
+          class="overview-title primary--text"
+        >
+          Your local services and features
+        </span>
+         
+        <span
+          class="align-right pt-2"
+        >
+          PT = Public Transport
+        </span>
+      </div>
+    </div>
+     
+    <div
+      mb-2=""
+      mt-4=""
+      sm6=""
+    >
+      <div
+        row=""
+        wrap=""
+      >
+        <div
+          pr-2=""
+          sm3=""
+        >
+          <b>
+            Train Station:
+          </b>
+        </div>
+         
+        <!---->
+         
+        <!---->
+      </div>
+    </div>
+     
+    <!---->
+    <div
+      mb-2=""
+      mt-4=""
+      sm6=""
+    >
+      <div
+        row=""
+        wrap=""
+      >
+        <div
+          pr-2=""
+          sm3=""
+        >
+          <b>
+            Supermarket:
+          </b>
+        </div>
+         
+        <!---->
+         
+        <!---->
+      </div>
+    </div>
+     
+    <div
+      sm12=""
+    >
+      <hr />
+    </div>
+    <div
+      mb-2=""
+      mt-4=""
+      sm6=""
+    >
+      <div
+        row=""
+        wrap=""
+      >
+        <div
+          pr-2=""
+          sm3=""
+        >
+          <b>
+            Shopping Center:
+          </b>
+        </div>
+         
+        <!---->
+         
+        <!---->
+      </div>
+    </div>
+     
+    <!---->
+    <div
+      mb-2=""
+      mt-4=""
+      sm6=""
+    >
+      <div
+        row=""
+        wrap=""
+      >
+        <div
+          pr-2=""
+          sm3=""
+        >
+          <b>
+            7-day medical falcility:
+          </b>
+        </div>
+         
+        <!---->
+         
+        <!---->
+      </div>
+    </div>
+     
+    <div
+      sm12=""
+    >
+      <hr />
+    </div>
+    <div
+      mb-2=""
+      mt-4=""
+      sm6=""
+    >
+      <div
+        row=""
+        wrap=""
+      >
+        <div
+          pr-2=""
+          sm3=""
+        >
+          <b>
+            Local Shops:
+          </b>
+        </div>
+         
+        <!---->
+         
+        <!---->
+      </div>
+    </div>
+     
+    <!---->
+    <div
+      mb-2=""
+      mt-4=""
+      sm6=""
+    >
+      <div
+        row=""
+        wrap=""
+      >
+        <div
+          pr-2=""
+          sm3=""
+        >
+          <b>
+            Sports Field:
+          </b>
+        </div>
+         
+        <!---->
+         
+        <!---->
+      </div>
+    </div>
+     
+    <div
+      sm12=""
+    >
+      <hr />
+    </div>
+    <div
+      mb-2=""
+      mt-4=""
+      sm6=""
+    >
+      <div
+        row=""
+        wrap=""
+      >
+        <div
+          pr-2=""
+          sm3=""
+        >
+          <b>
+            Walking Tracks:
+          </b>
+        </div>
+         
+        <!---->
+         
+        <!---->
+      </div>
+    </div>
+     
+    <!---->
+    <div
+      mb-2=""
+      mt-4=""
+      sm6=""
+    >
+      <div
+        row=""
+        wrap=""
+      >
+        <div
+          pr-2=""
+          sm3=""
+        >
+          <b>
+            Hospital:
+          </b>
+        </div>
+         
+        <!---->
+         
+        <!---->
+      </div>
+    </div>
+     
+    <div
+      sm12=""
+    >
+      <hr />
+    </div>
+  </div>
+   
+  <div
+    mt-5=""
+    row=""
+    wrap=""
+  >
+    <div
+      sm2=""
+    />
+     
+    <div
+      mt-3=""
+      sm3=""
+    >
+      <div
+        class="primary--text text-xs-center"
+      >
+        <b>
+          Catchment Information
+        </b>
+      </div>
+    </div>
+     
+    <div
+      mt-3=""
+      sm3=""
+    >
+      <div
+        class="primary--text text-xs-center"
+      >
+        <b>
+          Independent Schools
+        </b>
+      </div>
+    </div>
+     
+    <div
+      mt-3=""
+      sm3=""
+    >
+      <div
+        class="primary--text text-xs-center"
+      >
+        <b>
+          City/Beach Index
+        </b>
+      </div>
+    </div>
+  </div>
+   
+  <div
+    my-4=""
+    row=""
+    wrap=""
+  >
+    <div
+      py-2=""
+      sm2=""
+    >
+      <strong>
+        Primary:
+      </strong>
+    </div>
+     
+    <div
+      class="text-xs-center"
+      px-2=""
+      py-2=""
+      sm3=""
+    >
+      <!---->
+       
+      <div>
+        
+      </div>
+    </div>
+    <div
+      class="text-xs-center"
+      px-2=""
+      py-2=""
+      sm3=""
+    >
+      <!---->
+       
+      <div>
+        
+      </div>
+    </div>
+    <div
+      class="text-xs-center"
+      px-2=""
+      py-2=""
+      sm3=""
+    >
+      <!---->
+       
+      <div>
+        
+      </div>
+    </div>
+     
+    <div
+      sm12=""
+    >
+      <hr />
+    </div>
+  </div>
+  <div
+    my-4=""
+    row=""
+    wrap=""
+  >
+    <div
+      py-2=""
+      sm2=""
+    >
+      <strong>
+        Secondary:
+      </strong>
+    </div>
+     
+    <div
+      class="text-xs-center"
+      px-2=""
+      py-2=""
+      sm3=""
+    >
+      <!---->
+       
+      <div>
+        
+      </div>
+    </div>
+    <div
+      class="text-xs-center"
+      px-2=""
+      py-2=""
+      sm3=""
+    >
+      <!---->
+       
+      <div>
+        
+      </div>
+    </div>
+    <div
+      class="text-xs-center"
+      px-2=""
+      py-2=""
+      sm3=""
+    >
+      <!---->
+       
+      <div>
+        
+      </div>
+    </div>
+     
+    <div
+      sm12=""
+    >
+      <hr />
+    </div>
+  </div>
+   
+  <!---->
+</section>
+`;

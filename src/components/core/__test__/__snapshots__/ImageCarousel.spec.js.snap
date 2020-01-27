@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImageCarousel renders correctly 1`] = `
+<carousel-stub
+  easing="ease"
+  minswipedistance="8"
+  mousedrag="true"
+  navigateto="0"
+  navigationclicktargetsize="20"
+  navigationenabled="true"
+  navigationnextlabel=<i class='fa fa-chevron-right'></i>
+  navigationprevlabel=<i class='fa fa-chevron-left'></i>
+  paginationactivecolor="#528EC1"
+  paginationcolor="#efefef"
+  paginationenabled="true"
+  paginationpadding="10"
+  paginationsize="10"
+  perpage="1"
+  resistancecoef="20"
+  scrollperpage="true"
+  spacepadding="0"
+  spacepaddingmaxoffsetfactor="0"
+  speed="500"
+>
+  <slide-stub>
+    <figure
+      class="image-slide"
+    >
+      <img
+        src="https://images.pexels.com/photos/584399/living-room-couch-interior-room-584399.jpeg"
+      />
+       
+      <span
+        class="image-name"
+      >
+        Living room couch interior room
+      </span>
+    </figure>
+  </slide-stub>
+</carousel-stub>
+`;

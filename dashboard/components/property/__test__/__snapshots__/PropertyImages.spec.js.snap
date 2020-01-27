@@ -1,0 +1,180 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PropertyImages renders correctly 1`] = `
+<section
+  class="property-images-view"
+>
+  <div
+    class="images-list"
+  >
+    <div
+      class="d-flex"
+    >
+      <div
+        class="property-image"
+        flat=""
+      >
+        <div
+          class="grey lighten-2"
+          height="180"
+          src="https://bucket-api.domain.com.au/v1/bucket/image/w1600-h1200-2012780783_1_pi_160504_061639"
+          width="240"
+        />
+         
+        <div
+          class="image-delete"
+        >
+          <div
+            color="grey lighten-3"
+            small=""
+          >
+            close
+          </div>
+        </div>
+         
+        <div
+          class="image-edit"
+        >
+          <div
+            color="grey lighten-3"
+            small=""
+          >
+            edit
+          </div>
+        </div>
+      </div>
+       
+      <div
+        class="add-new-image"
+        color="grey lighten-1"
+        tile=""
+      >
+        <div
+          x-large=""
+        >
+          add
+        </div>
+      </div>
+    </div>
+  </div>
+   
+  <div
+    fullscreen=""
+  >
+    <div>
+      <div
+        class="modal-close"
+      >
+        <div
+          dark=""
+          icon=""
+        >
+          <div>
+            close
+          </div>
+        </div>
+      </div>
+       
+      <div
+        height="100%"
+        value="-1"
+      >
+        <div
+          contain=""
+        >
+          <img
+            alt="Front"
+            src="https://bucket-api.domain.com.au/v1/bucket/image/w1600-h1200-2012780783_1_pi_160504_061639"
+          />
+        </div>
+      </div>
+       
+      <!---->
+    </div>
+  </div>
+   
+  <div
+    max-width="600px"
+    persistent=""
+  >
+    <div>
+      <div
+        class="pt-4 pb-0"
+      >
+        <h3
+          class="headline"
+        >
+          Add New Image
+        </h3>
+      </div>
+       
+      <div>
+        <form
+          lazy-validation=""
+        >
+          <input
+            label="Image Url"
+            required="required"
+            rules=""
+          />
+           
+          <input
+            label="Comment"
+          />
+        </form>
+      </div>
+       
+      <div>
+        <div />
+         
+        <div
+          color="primary"
+          flat=""
+        >
+          Save
+        </div>
+         
+        <div
+          flat=""
+        >
+          Cancel
+        </div>
+      </div>
+    </div>
+  </div>
+   
+  <div
+    max-width="400px"
+    persistent=""
+  >
+    <div>
+      <div
+        class="text-xs-center"
+      >
+        <h4
+          class="mt-2 title"
+        >
+          Are you sure you want to delete the selected image from the property?
+        </h4>
+      </div>
+       
+      <div>
+        <div />
+         
+        <div
+          color="primary"
+          flat=""
+        >
+          OK
+        </div>
+         
+        <div
+          flat=""
+        >
+          Cancel
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+`;

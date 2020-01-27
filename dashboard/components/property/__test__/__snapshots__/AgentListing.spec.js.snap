@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AgentListing renders correctly 1`] = `
+<section
+  class="agent-listing"
+>
+  <v-layout-stub
+    justify-center=""
+    row=""
+    tag="div"
+    wrap=""
+  >
+    <!---->
+     
+    <v-flex-stub
+      sm12=""
+      tag="div"
+    >
+      <property-image-slider-stub />
+    </v-flex-stub>
+  </v-layout-stub>
+   
+  <v-layout-stub
+    pa-2=""
+    tag="div"
+  >
+    <v-flex-stub
+      class="content-section"
+      pa-3=""
+      sm12="true"
+      tag="div"
+    >
+      <div
+        class="mt-2"
+      >
+        
+      </div>
+       
+      <!---->
+       
+      <v-divider-stub />
+       
+      <div
+        class="my-2"
+      >
+        <img
+          height="15px"
+          src="[object Object]"
+        />
+         
+        <span
+          class="ml-1"
+        >
+          
+        </span>
+         
+        <img
+          class="ml-3"
+          height="20px"
+          src="[object Object]"
+        />
+         
+        <span
+          class="ml-1"
+        >
+          
+        </span>
+         
+        <img
+          class="ml-3"
+          height="15px"
+          src="[object Object]"
+        />
+         
+        <span
+          class="ml-1"
+        >
+          
+        </span>
+      </div>
+       
+      <v-divider-stub />
+       
+      <v-layout-stub
+        my-2=""
+        row=""
+        tag="div"
+        wrap=""
+      />
+       
+      <v-divider-stub />
+       
+      <!---->
+       
+      <v-divider-stub />
+       
+      <!---->
+    </v-flex-stub>
+     
+    <!---->
+  </v-layout-stub>
+</section>
+`;

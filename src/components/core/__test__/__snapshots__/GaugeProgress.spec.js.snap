@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GaugeProgress renders correctly 1`] = `
+<div
+  class="gauge-progress"
+  percentage="60"
+>
+  <svg
+    class="stat-circle"
+    id="gauge_progress"
+    viewBox="0 0 36 45"
+  >
+    <path
+      class="progress-bg"
+      d="M18 33.9155
+      a 15.9155 15.9155 0 0 1 0 -31.831
+      a 15.9155 15.9155 0 0 1 0 31.831"
+    />
+     
+    <path
+      class=""
+      d="M18 33.9155
+      a 15.9155 15.9155 0 0 1 0 -31.831
+      a 15.9155 15.9155 0 0 1 0 31.831"
+    />
+     
+    <image
+      height="12px"
+      width="12px"
+      x="12"
+      y="12"
+    />
+     
+    <text
+      fill="#528EC1"
+      font-size="12"
+      font-weight="bold"
+      x="30%"
+      y="95%"
+    >
+      -1
+    </text>
+     
+    <text
+      fill="#AAA"
+      font-size="4"
+      x="78%"
+      y="95%"
+    >
+      /10
+    </text>
+  </svg>
+</div>
+`;
