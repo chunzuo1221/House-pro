@@ -34,7 +34,7 @@
     "@johmun/vue-tags-input": "^1.5.4",
     "@mdi/font": "^2.6.95",
     "aws-sdk": "^2.334.0",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.5.2",
     "body-parser": "^1.18.3",
